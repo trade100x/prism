@@ -17,6 +17,33 @@ Prism splits into two agentic banking experiences sharing one on-chain core:
 
 **Thesis: your entire expense life is managed by an agent, not by you.**
 
+### 1.0 The account: one wallet, four rails
+
+The consumer model stays deliberately simple — **you deposit into one wallet, and the agent manages everything from there.** No accounts, no products to pick. The wallet is the hub; everything else is a rail hanging off it.
+
+```
+                  deposit
+                     │
+              ┌──────▼──────┐
+              │   WALLET    │  ← single balance, agent-managed
+              └──┬───┬───┬──┘
+                 │   │   │
+   ┌─────────────┘   │   └─────────────┐
+   │            ┌────┴────┐            │
+   ▼            ▼         ▼            ▼
+CARDS        YIELD    FIAT RAILS   CROSS-CHAIN
+per-expense  idle     send/receive  trade any token
+virtual      balance  fiat in/out   BTC, memes,
+cards        earns                  everything
+```
+
+- **Cards.** Wallet connects to the card provider; the per-expense virtual cards (1.1) spend directly against it.
+- **Yield.** Idle balance earns by default rather than sitting dead. Not a product the user opts into — the resting state of money in Prism.
+- **Fiat rails.** Send and receive real-world fiat, so this functions as an actual bank account and not a crypto wallet with extra steps.
+- **Cross-chain trading.** Connected out to every other chain — BTC, memecoins, anything. The product is token-agnostic (see core concept); the wallet is the trading surface too.
+
+**Design tension worth solving early:** yield-bearing balance and instant card authorization pull against each other. Money earning yield must still clear a swipe in ~2 seconds. That likely means just-in-time unwind at authorization, or a hot/cold split the agent rebalances — and it is a core piece of engineering, not a detail.
+
 ### 1.1 Per-expense virtual cards
 - Every recurring expense gets its **own card** — Netflix has a card, rent has a card, the gym has a card.
 - Spend control is per-card, so a leak is contained to one line item instead of the whole account.
@@ -73,6 +100,10 @@ $12 burger
 - [ ] Does the aggregate signal get sold/surfaced as its own product later?
 
 ### Open questions (personal)
+- [ ] Custody model: self-custody (agent needs session keys / spend policies) or custodial (simpler UX, heavier licensing)?
+- [ ] Where does the yield come from — T-bill-backed stablecoins, lending markets, something native to Robinhood Chain? Risk disclosure to the user?
+- [ ] Fiat rails: partner bank / licensed provider per geography. Which market first?
+- [ ] Bridging: who moves assets cross-chain, and who eats the risk when a bridge fails?
 - [ ] Card rails: who issues? On-chain spend authorization vs. a real card network (Visa/Mastercard BIN sponsor)?
 - [ ] Where does off-chain merchant data come from for categorization, if spend is on-chain?
 - [ ] How much authority does the agent have — advisory, approve-with-confirmation, or fully autonomous?
