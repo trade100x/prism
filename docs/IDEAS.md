@@ -197,6 +197,38 @@ $12 burger
 
 ---
 
+## Business model — free to the user, funded by the token
+
+**Principle: the app charges the user nothing.** No subscription, no account fees, no per-transaction charges. Free to use, in the spirit of Fomo.
+
+**Primary revenue: trading fees on the PRISM token.** The token launches on Robinhood and trades; the fees that trading generates fund the company. The bank is free because the token pays for it.
+
+### Revenue lines, mapped against the "free" principle
+
+| Line | Who pays | Consistent with "free to use"? |
+|---|---|---|
+| PRISM token trading fees | Traders | Yes — primary line |
+| Card interchange | Merchants | Yes — user never sees it |
+| Brand-funded rewards / paid meme coin placement | Brands & projects | Yes |
+| Yield spread on idle balances | Spread, not a fee | Yes, if disclosed |
+| **EMI interest after month 4** | **The user** | **Conflict — see below** |
+
+### Two tensions to resolve deliberately
+
+**1. "No other charge" vs. month-5 EMI interest.** The EMI product (1.2) charges interest once the 4-month window closes. That is a direct user charge. Either the principle means "no *fees*, but interest on borrowed money is not a fee" — a defensible line most users accept — or the EMI needs a different backend. Worth writing the exact sentence that will appear in marketing, because "the app is free" and "you'll be charged interest" have to coexist on the same page.
+
+**2. Cost structure is hard currency; token revenue is not.** The product carries real, recurring cash costs — card issuing, lounge access, cashback paid in equity and meme coins, and the float on interest-free lending. Token trading fees are cyclical and tend to be highest at launch, then decay with attention. Funding fixed recurring costs from reflexive, volume-dependent revenue is the failure mode that kills token-funded consumer products: the perks get cut exactly when sentiment is already weak, which accelerates the decline.
+
+This doesn't argue against the model — it argues for sizing perks against a **conservative floor** of token revenue, with interchange and the post-window interest as the load-bearing base, and token fees treated as the upside that funds growth rather than the thing that keeps the lights on.
+
+### Open questions (business model)
+- [ ] What is the exact fee mechanism on PRISM — a protocol-level trading fee, or a share of venue fees? Who captures it?
+- [ ] What's the conservative-case token revenue, and does the perk stack survive at that level?
+- [ ] Is the token purely a revenue instrument, or does it carry product utility (fee discounts, reward multipliers, tiering)?
+- [ ] How do the free perks stay funded through a bear market?
+
+---
+
 ## 2026-09-11 — Core concept (v0, in progress)
 
 **Prism is an on-chain, stablecoin-based neobank built on Robinhood Chain, with an AI agent as the primary interface — an "AI CFO" rather than a banking app.**
