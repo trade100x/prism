@@ -97,7 +97,40 @@ Two notes on this, one upside and one risk:
 
 **Possible tie-in with hoodmaker.** Sourcing meme coins for cashback payouts needs liquidity and routing on Robinhood Chain — which is what the sibling project is built around. Worth checking whether hoodmaker becomes Prism's execution layer for this tier rather than routing through third-party venues.
 
+#### Crypto-collateralized EMI — "don't sell your Bitcoin to buy things"
+
+Any card spend can be split into **4 monthly installments at zero interest**, with the user's existing crypto posted as collateral. Collateral can be BTC, ETH, SOL, or even meme coins. After the 4-month window, interest kicks in.
+
+```
+spend $2,000 ──► split into 4 × $500 ──► post BTC as collateral
+                                              │
+                  months 1–4: 0% interest ────┤
+                  month 5+:   interest accrues ┘
+```
+
+**Why this is the right product for this user base.** The real pain isn't affordability — it's that crypto holders don't want to *sell* to spend. Selling is a taxable event and a break in conviction. This converts a dead, illiquid conviction position into working purchasing power without unwinding it. That's a sharper pitch than any BNPL offer: *"keep your Bitcoin, spend anyway."*
+
+**Where "zero interest" actually comes from.** It isn't charity, and the economics should be stated plainly internally:
+- The loan is **over-collateralized**, so credit risk is near zero — unlike conventional BNPL, this needs no underwriting and no credit bureau.
+- The locked collateral can earn while it sits (ties directly into the yield rail, 1.0).
+- Interchange on the original spend.
+- Revenue arrives at **month 5**, on balances that roll past the free window — the same model as a credit card's grace period.
+
+**Retention effect.** An open EMI means collateral is locked in Prism. Leaving requires repaying first. Combined with accumulating cashback positions (1.2), the switching cost compounds.
+
+**Risks that need real design, not a footnote:**
+- **Liquidation is the worst experience in the product.** "Your Bitcoin was sold while you slept because SOL dumped 30%" will churn a user permanently and generate the screenshots that define the brand. The agent should pre-warn, offer top-up, and auto-deleverage *before* forced liquidation — this is exactly the kind of thing an AI CFO should be doing on the user's behalf.
+- **Meme coins as collateral need drastically different terms.** Tiered LTV by asset: BTC/ETH generous, SOL moderate, meme coins very low or excluded. A meme coin can gap down faster than any liquidation engine can react, leaving the loan undercollateralized and the loss on Prism's book.
+- **This is consumer credit.** BNPL is under active regulatory tightening in several markets, and crypto-collateralized consumer lending adds a second licensing question on top.
+
+*Terminology note: "EMI" suggests India as a first market — worth confirming, since it drives the fiat rails, licensing, and card issuer decisions.*
+
 ### Open questions (card & rewards)
+- [ ] LTV tiers per collateral asset, and which assets are excluded as collateral entirely?
+- [ ] Who takes the loss on an undercollateralized liquidation — Prism's balance sheet or a lending partner's?
+- [ ] What's the post-4-month interest rate, and is that the main revenue line or a backstop?
+- [ ] Is the EMI book funded by Prism, by the yield pool (user deposits lending to user borrowers), or a third-party lender?
+- [ ] First market — the "EMI" framing implies India; confirm, as it drives rails, licensing, and issuer choice.
 - [ ] **"Launch access" — lounge access, or early access to Robinhood token launches?** Materially different features.
 - [ ] Cashback asset: tokenized equity of the brand? Availability is jurisdiction-dependent — which markets can actually receive it, and what's the fallback (fractional shares, points, stablecoin) where it isn't permitted?
 - [x] ~~What happens when the brand isn't listed?~~ → **meme coin cashback tier** (above).
