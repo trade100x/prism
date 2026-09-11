@@ -54,6 +54,37 @@ cards        earns                  everything
 - **Backward:** categorize and analyze historical spend from the user's wallet activity.
 - **Forward:** predict *future* expenses, which is the actual differentiator. Budgeting is automated rather than a form the user fills in.
 
+### 1.2 The card product itself
+
+Ambition: **the best card in the industry**, not a crypto-card compromise. The rewards stack is where it differentiates.
+
+- **Premium perks.** Lounge access and the usual premium-tier benefits, so it competes on the same ground as a top-tier consumer card. *(→ open question: "launch access" may instead mean early access to token launches on Robinhood — a crypto-native perk no other card can offer. Confirm which, or do both.)*
+- **Points.** Card earns points; points convert into other rewards. Standard, expected, table stakes.
+- **Brand-token cashback — the differentiated one.** Spend at a brand, get **that brand's token back as cashback**. Buy from Apple, get Apple back.
+
+#### Why brand-token cashback is the strongest idea here
+
+It closes the loop with the spend-to-investment graph (1.4). Everywhere else, cashback is a small rebate you spend again. Here, **your consumption quietly builds a portfolio of the companies you actually use.**
+
+```
+spend at Apple ──► cashback in Apple ──► you now hold Apple
+      │                                        │
+      └──── recurring spend compounds ─────────┘
+             the position grows with the habit
+```
+
+- It makes the 1.4 thesis *automatic* instead of advisory. The tree says "your spending shows you believe in this category" — the cashback acts on it without the user lifting a finger.
+- The pitch writes itself: *"you already made Apple rich. Now you own some of it."*
+- Retention is structural — leaving means giving up an accumulating position, not just a points balance.
+- Only works because this is built on a brokerage chain. A normal neobank cannot pay you in equity.
+
+### Open questions (card & rewards)
+- [ ] **"Launch access" — lounge access, or early access to Robinhood token launches?** Materially different features.
+- [ ] Cashback asset: tokenized equity of the brand? Availability is jurisdiction-dependent — which markets can actually receive it, and what's the fallback (fractional shares, points, stablecoin) where it isn't permitted?
+- [ ] What happens when the brand isn't listed — private companies, local merchants? Fall back to the upstream supplier from the 1.4 tree, a sector basket, or plain cashback?
+- [ ] Who funds the rewards? Interchange alone, or brand-funded (brands pay for equity-linked loyalty — potentially a second revenue line)?
+- [ ] Does cashback-as-equity create a taxable event at receipt, and does the agent track cost basis for the user?
+
 ### 1.3 How the forecast works
 Two inputs combine:
 - **Inferred from wallet history — cadence detection.** The agent learns periodicity from past on-chain spend: a movie once a month, a trip every three months, an annual renewal. It projects those forward into an expected cost curve: *"your predicted spend next quarter is X because you typically do A, B, C."*
