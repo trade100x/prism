@@ -34,6 +34,44 @@ Two inputs combine:
 
 The forecast is the budget. The user doesn't set one; the agent derives it and manages against it.
 
+### 1.4 Spend-to-investment graph ("where does my money actually go?")
+
+**Thesis: your own spending is the best investment research you have, and nobody surfaces it to you. A bank should.**
+
+Every transaction gets an expandable **money-flow tree**: this payment went to brand X, brand X's economics run on suppliers A, B, C, and *these* are the investable names in that chain.
+
+**The key move is going upstream, not stopping at the brand.** Subscribing to ChatGPT doesn't mean "invest in OpenAI" — OpenAI isn't the trade, and the obvious surface read is the shallow one. The real exposure sits behind it: compute, data centers, cheap manufacturing, power. The tree's job is to walk from the thing you paid for to the listed companies that actually capture that spend.
+
+```
+$20 ChatGPT subscription
+└── OpenAI (private — not directly investable)
+    ├── Compute / accelerators ....... NVDA, AMD
+    ├── Foundry / manufacturing ...... TSM
+    ├── Data center & cloud .......... MSFT, and DC REITs
+    └── Power & cooling .............. utilities, grid names
+
+$12 burger
+└── Restaurant brand ................ MCD / QSR
+    ├── Beef & protein supply ........ TSN
+    ├── Potatoes / frozen ............ LW
+    ├── Distribution ................. SYY
+    └── Packaging .................... PKG
+```
+
+**Two levels of signal:**
+- **Your own spend.** Bucket it and you can see your real exposure: "I spend most here, so I believe in this category" — a thesis derived from behavior instead of vibes.
+- **Aggregate user spend.** Across all Prism users, spending *is* a leading indicator — it moves ahead of reported revenue. If category spend is accelerating across the base, that's a signal to surface: *"more people are spending here, this looks like it's about to run."* This aggregate is proprietary data that no brokerage or research desk has in this form — likely the deepest moat in the product.
+
+**Framing to the user:** not "buy this," but *"if you think burgers are going to skyrocket, here's the chain that captures it."* Give the tree and the reasoning, let the conviction be theirs.
+
+**Strategic fit with Robinhood:** this is why the Robinhood build is more than distribution — the insight ends in a tradeable ticker, and the brokerage is already in the same surface. Spend → money-flow tree → thesis → buy, with no hop out of the product. The loop closes in a way a standalone neobank can't match.
+
+### Open questions (investment layer)
+- [ ] Where does the supply-chain graph come from — licensed data (e.g. supplier/customer relationship datasets), LLM-constructed, or hand-curated for the top N brands?
+- [ ] Merchant → brand → parent-company resolution is the hard plumbing problem; what resolves it?
+- [ ] Regulatory line: surfacing exposure trees and aggregate spend trends is research/data; naming a ticker as a suggestion edges toward advice. Where does this sit, and under whose license — ours or Robinhood's?
+- [ ] Does the aggregate signal get sold/surfaced as its own product later?
+
 ### Open questions (personal)
 - [ ] Card rails: who issues? On-chain spend authorization vs. a real card network (Visa/Mastercard BIN sponsor)?
 - [ ] Where does off-chain merchant data come from for categorization, if spend is on-chain?
