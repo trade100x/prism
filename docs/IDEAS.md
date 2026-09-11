@@ -9,7 +9,7 @@ Running log of ideas for Prism. Newest at the top.
 Prism splits into two agentic banking experiences sharing one on-chain core:
 
 1. **Personal agentic banking** — the AI CFO for an individual
-2. **Business agentic banking** — the AI CFO for a company *(detail pending)*
+2. **Business agentic banking** — the AI CFO for a company
 
 ---
 
@@ -194,6 +194,55 @@ $12 burger
 - [ ] Where does off-chain merchant data come from for categorization, if spend is on-chain?
 - [ ] How much authority does the agent have — advisory, approve-with-confirmation, or fully autonomous?
 - [ ] Does the agent also *fund* forecasted expenses (pre-allocate / auto-save into buckets)?
+
+---
+
+## 2. Business agentic banking (v0, in progress)
+
+The business surface needs its own feature set — a company's money problems are not a consumer's.
+
+### 2.1 Banking as a CLI — programmable money
+
+**A CLI is a must.** Businesses get a command-line interface to their banking, so they can build on top of it and write whatever logic they want against their own accounts. It must be reachable from **every coding terminal and every AI chat**. The same CLI ships for personal accounts too — consumers who want to script their money can.
+
+Three surfaces, one core:
+
+```
+        ┌──────────────────────────┐
+        │   Prism money core       │
+        │  (wallet, rails, agent)  │
+        └───┬────────┬─────────┬───┘
+            │        │         │
+         ┌──▼──┐  ┌──▼──┐  ┌───▼────┐
+         │ CLI │  │ API │  │  MCP   │
+         └──┬──┘  └──┬──┘  └───┬────┘
+       terminals   your      any AI
+       & CI/CD     backend   chat/agent
+```
+
+**"Accessible from all AI chats" means an MCP server.** That is the concrete build — an MCP server exposing balances, payments, cards, treasury, and reporting as tools, so Claude Code, Cursor, or any agent the company already uses can bank directly. No integration project, no SDK adoption curve; the company's existing agents gain money as a capability.
+
+**Why this is the strategically largest idea in the business track.** It changes what Prism is. Not "a bank with an AI in it" — **the money layer other people's agents run on.** Every company building internal agents eventually needs those agents to pay for things: pay a vendor, top up an API, settle a contractor, move treasury. Today that's the hardest part of agent deployment. Prism would be the default answer, and the surface area is far larger than the neobank itself.
+
+**This is also the place stablecoins genuinely beat incumbents.** Programmatic money movement is where legacy rails are worst: batch windows, banking hours, ACH latency, no clean API, no 24/7. Instant, always-on, API-native settlement is a real technical advantage here — not a crypto-flavored version of something that already worked.
+
+### Security — the load-bearing constraint
+
+A CLI that moves money is a credential sitting in a terminal, and an MCP server that moves money is a **money tool attached to an LLM that reads untrusted input**. Both need to be designed for from day one, not retrofitted:
+
+- **Scoped, revocable keys** — per-key spend limits, allowlisted destinations, per-environment separation (a CI key must not be able to drain treasury).
+- **Policy engine above the key** — velocity caps, approval thresholds over a limit, human-in-the-loop for new counterparties.
+- **Prompt injection is the sharp edge.** An agent with a payment tool that ingests a malicious email, web page, or PR description can be induced to send funds. Mitigation is architectural, not prompt-level: payment authorization must not be reachable by instruction alone — bounded allowlists, out-of-band confirmation above a threshold, and policies enforced server-side where the model cannot talk its way past them.
+- **Full audit trail** — every agent-initiated action attributable to a key, a policy, and a human owner.
+
+Getting this right is also a **selling point**, not just a cost: no finance team hands an AI agent live payment access without exactly these controls, so shipping them well is what makes the product adoptable at all.
+
+### Open questions (business)
+- [ ] Auth model for the CLI — API keys, OAuth device flow, hardware-backed signing for high-value moves?
+- [ ] Is the MCP server hosted by Prism, or self-hosted by the customer?
+- [ ] What's in the v1 tool surface — read-only (balances, reporting) first, then write (payments)? Read-only ships far faster and builds trust.
+- [ ] Multi-user companies: roles, approvals, segregation of duties?
+- [ ] Does the CLI ship before or after the consumer app? It may be the faster wedge — developers adopt without a licence-heavy consumer launch.
 
 ---
 
