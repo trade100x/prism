@@ -78,10 +78,32 @@ spend at Apple ──► cashback in Apple ──► you now hold Apple
 - Retention is structural — leaving means giving up an accumulating position, not just a points balance.
 - Only works because this is built on a brokerage chain. A normal neobank cannot pay you in equity.
 
+#### Meme coin cashback — the fallback tier
+
+Answers the "what if the brand isn't listed?" case. **No stock behind the brand → the user gets a meme coin instead**, selected by a Prism engine. Sourced from either on-chain Solana meme coins or Robinhood Chain meme coins.
+
+So the cashback ladder is:
+
+| Brand type | Cashback asset |
+|---|---|
+| Publicly listed | That brand's token / tokenized equity |
+| Not listed | Meme coin, chosen by the selection engine |
+
+Two notes on this, one upside and one risk:
+
+**Upside — the selection engine is a distribution business.** Paying cashback in a meme coin creates continuous, recurring buy pressure on that coin, sourced from real consumer spend rather than speculation. Meme coin teams would pay meaningfully for that slot. This is plausibly a second revenue line and a reason for projects to court Prism — but it also means the engine's ranking must be honest about whether placement is paid, or the feature becomes a liability the first time a selected coin collapses.
+
+**Risk — this tier behaves nothing like the equity tier.** Equity cashback compounds into ownership; a meme coin can go to zero in a week. Users will not distinguish between the two tiers by themselves, so the product has to: different framing, different expectations, possibly an opt-out into plain stablecoin cashback for users who don't want the exposure.
+
+**Possible tie-in with hoodmaker.** Sourcing meme coins for cashback payouts needs liquidity and routing on Robinhood Chain — which is what the sibling project is built around. Worth checking whether hoodmaker becomes Prism's execution layer for this tier rather than routing through third-party venues.
+
 ### Open questions (card & rewards)
 - [ ] **"Launch access" — lounge access, or early access to Robinhood token launches?** Materially different features.
 - [ ] Cashback asset: tokenized equity of the brand? Availability is jurisdiction-dependent — which markets can actually receive it, and what's the fallback (fractional shares, points, stablecoin) where it isn't permitted?
-- [ ] What happens when the brand isn't listed — private companies, local merchants? Fall back to the upstream supplier from the 1.4 tree, a sector basket, or plain cashback?
+- [x] ~~What happens when the brand isn't listed?~~ → **meme coin cashback tier** (above).
+- [ ] How does the meme coin selection engine rank? Liquidity, momentum, paid placement, safety screen? Is paid placement disclosed?
+- [ ] Rug protection: what happens to the user when a cashback meme coin collapses? Is there an auto-convert-to-stable option?
+- [ ] Opt-out: can a user choose stablecoin cashback instead of meme coin exposure?
 - [ ] Who funds the rewards? Interchange alone, or brand-funded (brands pay for equity-linked loyalty — potentially a second revenue line)?
 - [ ] Does cashback-as-equity create a taxable event at receipt, and does the agent track cost basis for the user?
 
