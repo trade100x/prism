@@ -4,6 +4,44 @@ Running log of ideas for Prism. Newest at the top.
 
 ---
 
+## Product structure — two surfaces
+
+Prism splits into two agentic banking experiences sharing one on-chain core:
+
+1. **Personal agentic banking** — the AI CFO for an individual
+2. **Business agentic banking** — the AI CFO for a company *(detail pending)*
+
+---
+
+## 1. Personal agentic banking (v0, in progress)
+
+**Thesis: your entire expense life is managed by an agent, not by you.**
+
+### 1.1 Per-expense virtual cards
+- Every recurring expense gets its **own card** — Netflix has a card, rent has a card, the gym has a card.
+- Spend control is per-card, so a leak is contained to one line item instead of the whole account.
+- The **agent** holds the switch: it can turn a card on or off based on usage, not just the user toggling it manually.
+  - Implies the agent has a usage signal per subscription and acts on it (e.g. unused for N months → pause).
+
+### 1.2 Spend analysis — backward and forward
+- **Backward:** categorize and analyze historical spend from the user's wallet activity.
+- **Forward:** predict *future* expenses, which is the actual differentiator. Budgeting is automated rather than a form the user fills in.
+
+### 1.3 How the forecast works
+Two inputs combine:
+- **Inferred from wallet history — cadence detection.** The agent learns periodicity from past on-chain spend: a movie once a month, a trip every three months, an annual renewal. It projects those forward into an expected cost curve: *"your predicted spend next quarter is X because you typically do A, B, C."*
+- **Elicited in chat — forward intent.** The agent proactively asks *"are you planning anything else coming up?"* and folds the answer into the forecast. Planned one-offs (a wedding, a move, a new laptop) never appear in history, so they have to be asked for.
+
+The forecast is the budget. The user doesn't set one; the agent derives it and manages against it.
+
+### Open questions (personal)
+- [ ] Card rails: who issues? On-chain spend authorization vs. a real card network (Visa/Mastercard BIN sponsor)?
+- [ ] Where does off-chain merchant data come from for categorization, if spend is on-chain?
+- [ ] How much authority does the agent have — advisory, approve-with-confirmation, or fully autonomous?
+- [ ] Does the agent also *fund* forecasted expenses (pre-allocate / auto-save into buckets)?
+
+---
+
 ## 2026-09-11 — Core concept (v0, in progress)
 
 **Prism is an on-chain, stablecoin-based neobank built on Robinhood Chain, with an AI agent as the primary interface — an "AI CFO" rather than a banking app.**
